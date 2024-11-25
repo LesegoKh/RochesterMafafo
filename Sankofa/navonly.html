@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+    integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" 
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+
+<!-- Latest compiled and minified JavaScript -->
+<title>Rochester Mafafo</title>
+    <style>
+        .navbar {
+            position: fixed;
+            border: none;
+            z-index: 1000;
+            background-color: transparent;
+        }
+        .navbar-default {
+            border: none;
+            box-shadow: none;
+            background-color: transparent;
+        }
+        .navbar ul li {
+            background-color: transparent;
+            padding: 0 8px;
+        }
+        .navbar-brand {
+            color: #d3d1d1;
+            font-size: 24px;
+            margin-left: 15px;
+        }
+        body, html {
+            overflow-x: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin:0;
+            padding:0;
+            height: 100vh;
+        }
+        
+        span {
+            color: #000000;
+        }
+       
+        .main-content {
+            display: flex;
+            margin: 100px 20px 20px;
+            gap: 20px;
+        }
+
+        .image-container {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
+        }
+
+        .text-container {
+            flex: 1;
+            text-align: left;
+        }
+
+        .text-container h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .text-container p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        /* Thumbnails  */
+        .image-roll {
+            display: grid;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 10px;
+            grid-template-columns: repeat(2, 1fr 1fr);
+        }
+
+        .image-roll img {
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.3s ease;
+            
+        }
+
+        .image-roll img:hover {
+            border-color: #007bff;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 5px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .main-content {
+            flex-direction: column; /* Stack the text and image containers vertically */
+        }
+    
+        .text-container {
+            height: auto;
+            width: auto;
+            margin-top: 20px; /* Add spacing between image and text */
+        }
+        
+
+       /* Media query for small screens */
+@media (max-width: 468px) {
+    .main-content {
+        flex-direction: column; /* Stack the text and image containers vertically */
+    }
+
+    .text-container {
+        height: auto;
+        width: auto;
+        margin-top: 20px; /* Add spacing between image and text */
+    }
+
+    .image-container {
+        margin-bottom: 20px; /* Add spacing below the image container */
+    }
+}
+
+
+        @media (min-width: 468px) {
+           
+        }
+        .navbar {
+            border: none;
+            display:inline-flex;
+            justify-content:space-evenly;
+            width: 100vw;
+            background-color:transparent;
+        }
+        .navbar ul li {
+            display:inline-flex;
+            cursor:pointer;
+            font-size:24px;
+            font-weight:500;
+            align-items:center;
+            justify-content:center;
+            margin: 0 100px;
+            list-style:none;
+            background-color: transparent;
+        }
+        .navbar ul li a {
+            margin-top: 5px;
+            color: #919191;
+            background-color: #cccbcb;
+            border-radius: 30px;
+        }
+       
+        .navbar-toggler {
+            color: rgba(245, 245, 245, 0);
+            border: none;
+        }
+        .navbar-toggler:hover {
+            
+            background-color: rgba(245, 245, 245, 0);
+            border: none;
+        }
+        .collapse.show {
+            animation: slideIn 0.3s ease-out;
+        }
+        #topmenu btn {
+            align-items:end;
+            justify-content:end;
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+        .navbar-collapse {
+            border: none;
+            justify-content: flex-end;
+            background-color: #ffffff00;
+        }
+    </style>
+</head>
+<body>
+    
+    <!--My Bootstrap Navbar -->
+      <!-- Navbar -->
+<nav class="navbar navbar-default navbar-transparent">
+    <div class="container-fluid">
+        <!-- Brand and Toggler -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarMenu" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">RM</a>
+        </div>
+
+        <!-- Collapsible Menu -->
+        <div class="collapse navbar-collapse" id="navbarMenu" style="background-color: transparent;">
+            <ul class="nav navbar-nav navbar-right" style="background-color: transparent;">
+                <li class="nav-item"><a class="nav-link" href="./Home.html">home</a></li>
+                <li class="nav-item"><a class="nav-link" href="./navonly.html">collections</a></li>
+                <li class="nav-item"><a class="nav-link" href="./empty.html">about</a></li>
+                <li class="nav-item"><a class="nav-link" href="./contacct.html">contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <br>
+    <!-- Main Content -->
+<div class="main-content">
+    <!-- Image Container -->
+    <div class="image-container">
+        <img id="mainArtwork" src="./Repatriation Out of Babylon.jpg" alt="Main Artwork">
+        <div class="image-roll">
+            <img src="./Untitled Two women at market.jpg" alt="Artwork 1" onclick="changeImage('./Untitled Two women at market.jpg')">
+            <img src="./Untitled Watercolor (Market stall scene).jpg" alt="Artwork 2" onclick="changeImage('./Untitled Watercolor (Market stall scene).jpg')">
+            <img src="./Untitled Watercolor (4 Dancing Men).jpg" alt="Artwork 3" onclick="changeImage('./Untitled Watercolor (4 Dancing Men).jpg')">
+            <img  src="./Atura/Street scene.png" alt="Artwork 4" onclick="changeImage('./Atura/Street scene.png')">
+            <img  src="./Atura/fiery sacrament.png" alt="Artwork 5" onclick="changeImage('./Atura/fiery sacrament.png')">
+            <img  src="./Atura/Dancing Men.png" alt="Artwork 6" onclick="changeImage('./Atura/Dancing Men.png')">
+            <img  src="./Atura/Dancing Party Scene.png" alt="Artwork 7" onclick="changeImage('./Atura/Dancing Party Scene.png')">
+            <img class="street" src="./looseImgs/harmonica.jpg" alt="Artwork 8" onclick="changeImage('./looseImgs/harmonica.jpg')">
+            <img class="street" src="./The Cape Gallery/Galashewe Township Scene 1.jpg" alt="Artwork 9" onclick="changeImage('./The Cape Gallery/Galashewe Township Scene 1.jpg')">
+            <img class="street" src="./The Cape Gallery/Galashewe Township Scene 2.jpg" alt="Artwork 10" onclick="changeImage('./The Cape Gallery/Galashewe Township Scene 2.jpg')">
+            <img class="street" src="./The Cape Gallery/Galashewe Township Scene 3.jpg" alt="Artwork 10" onclick="changeImage('./The Cape Gallery/Galashewe Township Scene 3.jpg')">
+            <img class="street" src="./The Cape Gallery/Galashewe Township Scene 4.jpg" alt="Artwork 11" onclick="changeImage('./The Cape Gallery/Galashewe Township Scene 4.jpg')">
+        </div>
+    </div>
+
+    <!-- Text Container -->
+    <div class="text-container">
+        <h3>Title</h3>
+        <p><strong>Dimensions</strong> 15 1/4 x 20 13/100 inches</p>
+        <p><strong>Medium:</strong> Offset Lithograph</p>
+        <p><strong>Year:</strong> 2001</p>
+        <p></p>
+        
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="imageModal">
+    <span class="modal-close" onclick="closeModal()">&times;</span>
+    <img id="modalImage" src="" alt="Enlarged Artwork">
+</div>
+
+<script>
+  // Metadata for the images
+const artworkMetadata = {
+    //Atura.org Database's images
+    './Repatriation Out of Babylon.jpg': {
+        title: 'Repatriation Out of Babylon',
+        dimensions: '14 x 21 inches',
+        medium: 'Offset Lithograph',
+        year: '2001',
+        description: 'A vivid depiction of cultural repatriation, symbolizing hope and resilience.'
+    },
+    './Untitled Two women at market.jpg': { // The Cape gallery
+        title: 'Two Women at Market',
+        dimensions: '17 x 25 inches',
+        medium: 'Watercolour',
+        year: '1989',
+        description: 'This artwork beautifully portrays the daily life of two women at a bustling market.'
+    },
+    './Untitled Watercolor (Market stall scene).jpg': {
+        title: 'Market Stall Scene',
+        dimensions: '14 x 21 inches',
+        medium: 'Watercolour',
+        year: '1998',
+        description: 'A colorful and detailed view of a lively market stall.'
+    },
+    './Untitled Watercolor (4 Dancing Men).jpg': {
+        title: 'Four Dancing Men',
+        dimensions: '14 1/2 x 21 inches',
+        medium: 'Watercolour',
+        year: '2001',
+        description: 'A dynamic composition capturing the joy and rhythm of dance.'
+    },
+    './Untitled Watercolor (4 Dancing Men).jpg': {
+        title: 'Four Dancing Men',
+        dimensions: '14 1/2 x 21 inches',
+        medium: 'Watercolour',
+        year: '2001',
+        description: 'A dynamic composition capturing the joy and rhythm of dance.'
+    },
+    './Atura/Street scene.png': {
+        title: 'Street scene',
+        dimensions: '14 x 21 inches',
+        medium: 'Watercolour',
+        year: '1991',
+        description: 'Depiction of daily life in South Africa, rendered in delicate yet expressive watercolor.'
+    },
+    './Atura/fiery sacrament.png': {
+        title: 'Fiery Sacrament',
+        dimensions: '13 1/2 x 20 inches',
+        medium: 'Offset Lithograph',
+        year: '2001',
+        description: 'A striking offset lithograph that blends vibrant colors and dynamic forms to depict a scene rich with cultural and architectural narrative.'
+    },
+    './Atura/Dancing Men.png': {
+        title: 'Dancing Men',
+        dimensions: '14 1/2 x 21 inches',
+        medium: 'Watercolour',
+        year: '2001',
+        description: 'Portrays a lively celebration, emphasizing rhythm and cultural expression through bold watercolor techniques.'
+    },
+    './Atura/Dancing Party Scene.png': {
+        title: 'Dancing Party Scene',
+        dimensions: '20 1/2 x 29 inches',
+        medium: 'Watercolor Pastel',
+        year: '2001',
+        description: 'Portrays a lively celebration, emphasizing rhythm and cultural expression through bold watercolor techniques.'
+    },
+    './looseImgs/harmonica.jpg': {
+        title: 'Harmonica Blowers',
+        dimensions: '',
+        medium: 'N/A',
+        year: '2001',
+        description: 'Portrays a lively celebration, emphasizing rhythm and cultural expression through bold watercolor techniques.'
+    },
+    './The Cape Gallery/Galashewe Township Scene 1.jpg': {
+        title: 'Galashewe Township Scene 1',
+        dimensions: '41 x 64 cm',
+        medium: 'Watercolour',
+        year: 'N/A',
+        description: 'Captures the vibrant essence of township life.'
+    },
+    './The Cape Gallery/Galashewe Township Scene 2.jpg': {
+        title: 'Galashewe Township Scene 2',
+        dimensions: '30 x 30 cm',
+        medium: 'Watercolour',
+        year: 'N/A',
+        description: 'Watercolor painting from the same series, portrays another vivid glimpse of township life.'
+    },
+    './The Cape Gallery/Galashewe Township Scene 3.jpg': {
+        title: 'Galashewe Township Scene 3',
+        dimensions: '25 x 30 cm',
+        medium: 'Watercolour',
+        year: 'N/A',
+        description: 'Watercolor painting from the same series,  stands out in the series with its bold depiction of the townships lively atmosphere.'
+    },
+    './The Cape Gallery/Galashewe Township Scene 4.jpg': {
+        title: 'Galashewe Township Scene 4',
+        dimensions: '42 x 70 cm',
+        medium: 'Watercolour',
+        year: 'N/A',
+        description: 'Watercolor painting from the same series, captures a distinctive moment in the township series'
+    },
+
+};
+
+function updateMetadata(imageSrc) {
+    const metadata = artworkMetadata[imageSrc];
+    document.querySelector('.text-container h3').textContent = metadata.title;
+    document.querySelector('.text-container p:nth-child(2)').textContent = `Dimensions: ${metadata.dimensions}`;
+    document.querySelector('.text-container p:nth-child(3)').textContent = `Medium: ${metadata.medium}`;
+    document.querySelector('.text-container p:nth-child(4)').textContent = `Year: ${metadata.year}`;
+}
+
+function changeImage(imageSrc) {
+    // Change the main artwork image
+    document.getElementById('mainArtwork').src = imageSrc;
+    // Optionally, update metadata dynamically based on the selected image
+    updateMetadata(imageSrc);
+}
+
+
+// Modal functionality
+const mainImage = document.getElementById('mainArtwork');
+const modal = document.getElementById('imageModal');
+const modalImage = document.getElementById('modalImage');
+
+mainImage.addEventListener('click', () => {
+    modal.style.display = 'flex';
+    modalImage.src = mainImage.src;
+});
+
+function closeModal() {
+    modal.style.display = 'none';
+}
+
+</script>
+    
+
+    <footer style="text-align: center;">
+        <p> &copy; Website by Lesego Khunou</p>
+    </footer>
+</body>
+
+</html>

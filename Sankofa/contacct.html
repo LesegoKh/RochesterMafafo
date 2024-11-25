@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <title>Rochester Mafafo</title>
+    <style>
+        * {
+            font-weight: 400;
+        }
+        .navbar {
+            width: 100vw;
+            position: fixed;
+            z-index: 1000;
+        }
+        .navbar-default {
+            border: none;
+            box-shadow: none;
+        }
+        .navbar-brand {
+            color: #cccbcb;
+            font-size: 24px;
+            margin-left: 15px;
+        }
+        .navbar ul li {
+            padding: 0 8px;
+            background-color:transparent;
+        }
+        body, html {
+            overflow-x: hidden;
+            font-weight: 300;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+        footer {
+            text-align: center;
+        }
+        .modal-content {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+        .modal-body img {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            transform: scale(0.90);
+        }
+        .head {
+            margin-left: 0px;
+        }
+        .sales {
+            margin-left: 25px;
+            text-align: center;
+        }
+        .call {
+            margin-left:20px ;
+        }
+        img {
+            border: 2px solid gray;
+            border-radius: 30px;
+        }
+        
+        /* Media Queries */
+        @media (min-width: 468px) {
+            .container {
+                padding: 20px;
+            }
+        }
+        .navbar {
+            display:inline-flex;
+            justify-content:space-evenly;
+            width: 100vw;
+            background-color:transparent;
+        }
+        .navbar ul li {
+            display:inline-flex;
+            cursor:pointer;
+            font-size:24px;
+            font-weight:500;
+            align-items:center;
+            justify-content:center;
+            margin: 0 100px;
+            background-color: transparent;
+            list-style:none;
+        }
+        .navbar-default {
+            border: none;
+            box-shadow: none;
+        }
+        .navbar ul li a {
+            margin-top: 5px;
+            color: #919191;
+            background-color: #cccbcb;
+            border-radius: 30px;
+            
+        }
+        .navbar-toggler {
+            color: whitesmoke;
+            border: none;
+            
+        }
+        .navbar-toggler:hover {
+            background-color: whitesmoke;
+            border: none;
+        }
+        .collapse.show {
+            animation: slideIn 0.3s ease-out;
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(0);
+            }
+        }
+        .navbar-collapse {
+            justify-content: flex-end;
+            background-color: #4d4a4a00;
+        }
+
+        /* Flexbox Layout for Text and Map */
+        .text-and-map {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .text-container {
+            flex: 1;
+            padding: 10px;
+        }
+        .map-container {
+            flex: 1;
+            padding: 10px;
+        }
+        iframe {
+            width: 100%;
+            height: 450px;
+            border: 0;
+        }
+    </style>
+</head>
+<body>
+    
+   <!-- Navbar -->
+<nav class="navbar navbar-default navbar-transparent">
+    <div class="container-fluid">
+        <!-- Brand and Toggler -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarMenu" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">RM</a>
+        </div>
+
+        <!-- Collapsible Menu -->
+        <div class="collapse navbar-collapse" id="navbarMenu">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item"><a class="nav-link" href="./Home.html">home</a></li>
+                <li class="nav-item"><a class="nav-link" href="./navonly.html">collections</a></li>
+                <li class="nav-item"><a class="nav-link" href="./empty.html">about</a></li>
+                <li class="nav-item"><a class="nav-link" href="./contacct.html">contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    <br><br><br><br> <br><br>
+
+    <section>
+        <div class="container">
+            <div class="text-and-map">
+                <div class="text-container">
+                    <h3>Sankofa 360 Degrees Art Exhibition</h3>
+                    <h2>28 November 2024</h2>
+                    <h3 style="color: blue;"><u><b>17h30 for 18h30</b></u></h3>
+                    <h2>WHAG Art Gallery</h2>
+                    <br>
+                    <h4>Phone Number: <br>(+27) 053 831 1724/5</h4>
+                    <br>
+                    <h4>Address:<address> 1 Cullinan, Civic Centre, Kimberley</address></h4>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12371.19721581263!2d24.769152!3d-28.743794!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e9b1bae6084dd8d%3A0x6e55b1d17c065341!2s1%20Cullinan%20Cres%2C%20Civic%20Centre%2C%20Kimberley%2C%208300%2C%20South%20Africa!5e1!3m2!1sen!2sus!4v1732394998666!5m2!1sen!2sus"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="text-and-map">
+                <div class="text-container">
+                  <h3>Sales & Enquiries</h3><br>
+                    <h4>Inno Khunou</h4>
+                    <i class="fa-brands fa-whatsapp"> 082 - 770 - 3422</i>
+                </div>
+                <div class="map-container">
+                    <img style="height: 300px; width:300px;" class="seller" src="./20230706_114832 (1).jpg" alt="Inno_Khunou">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="text-and-map">
+                <div class="text-container">
+                  <h3>Enquiries</h3>
+                    <h4>Chepape Makgato
+                        (W.H.A.G Chief Curator)</h4>
+                    <i class="fa-solid fa-at"> Email address</i><h4>chepape@whag.co.za</h4>
+                </div>
+                <div class="map-container">
+                    <img style="height: 300px; width:250px;" class="seller" src="./Screenshot_20241123_231556_Instagram.jpg" alt="WHAG_Curator">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; Website by Lesego Khunou</p>
+    </footer>
+
+    <div id="popupModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">Rochester "Rocky" Mafafo cordially Invites You!<br> to Sankofa 360 Degrees Art Exhibition</h4>
+                </div>
+                <div class="modal-body">
+                    <img style="width: 100%; height: 100%; object-fit: contain;" src="./exhibit.jpg" alt="Popup Image">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#popupModal').modal('show');
+        });
+    </script>
+</body>
+</html>

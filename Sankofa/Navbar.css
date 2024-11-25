@@ -1,0 +1,46 @@
+/* navbar.css */
+.navbar {
+    position: fixed;
+    z-index: 1000;
+    display: inline-flex;
+    justify-content: space-evenly;
+    width: 100vw;
+    background-color: transparent;
+}
+
+.navbar ul li {
+    display: inline-flex;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: 500;
+    align-items: center;
+    justify-content: center;
+    margin: 0 100px;
+    list-style: none;
+}
+
+.navbar-toggler {
+    color: whitesmoke;
+    border: none;
+}
+
+.navbar-toggler:hover {
+    background-color: whitesmoke;
+}
+
+.collapse.show {
+    animation: slideIn 0.3s ease-out;
+}
+
+.navbar-collapse {
+    justify-content: flex-end;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}

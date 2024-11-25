@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artwork</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+    <style>
+        body, html {
+            font-size: 18px;
+            font-weight: 300;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar {
+            position: fixed;
+            z-index: 1000;
+            width: 100%;
+            margin-bottom: 0;
+        }
+
+        .main-content {
+            display: flex;
+            flex-wrap: wrap; /* Allows wrapping on smaller screens */
+            align-items: center;
+            justify-content: space-between;
+            height: calc(90vh - 30px);
+            padding: 20px;
+        }
+
+        .artwork-image {
+            max-height: 80%; /* Maintain proper proportions */
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .artwork-text {
+            width: 100%; /* Text takes up 30% of width */
+            max-height: 80%; /* Prevent overflow */
+            overflow:hidden;
+            text-align: center;
+        }
+
+        .artwork-text h3 {
+            margin-bottom: 10px;
+            font-size: 24px;
+            font-weight: 400;
+        }
+
+        .artwork-text p {
+            margin-bottom: 5px;
+        }
+
+        .image-roll {
+            text-align: center;
+            margin-top: 0px;
+            padding: 10px;
+            background: #f8f8f8;
+            border-top: 1px solid #ddd;
+        }
+
+        .image-roll img {
+            height: 60px;
+            margin: 5px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .image-roll img:hover {
+            border-color: #007bff;
+        }
+
+        .modal-image {
+            width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+
+        @media (max-width: 768px) {
+            .artwork-text {
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            .main-content {
+                flex-direction: column; /* Stack image and text vertically */
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">RM</a>
+            <ul class="nav navbar-nav">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#collections">Collections</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid main-content">
+        <!-- Artwork Image -->
+        <div class="col-md-8">
+            <img id="mainArtwork" class="artwork-image img-responsive" 
+                 src="./Repatriation Out of Babylon.jpg" alt="Main Artwork">
+        </div>
+
+        <!-- Text Section -->
+        <div class="col-md-4">
+            <div class="artwork-text">
+                <h3>Artwork Title</h3>
+                <p>
+                    <strong>Dimensions:</strong> 14 x 21 inches<br>
+                    <strong>Medium:</strong> Watercolor<br>
+                    <strong>Year:</strong> 2024<br>
+                </p>
+                <p>
+                    This beautiful watercolor painting captures the essence of life in vivid detail. 
+                    It represents [description of artwork].
+                </p>
+                <a href="collections.html" class="btn btn-primary">Back to Collections</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Roll -->
+    <div class="container-fluid image-roll">
+        <img src="./Untitled Two women at market.jpg" alt="Artwork 1" onclick="changeImage('artwork1.jpg')">
+        <img src="./Untitled Two women at market.jpg" alt="Artwork 2" onclick="changeImage('artwork2.jpg')">
+        <img src="./Untitled Watercolor (Market stall scene).jpg" alt="Artwork 3" onclick="changeImage('artwork3.jpg')">
+        <img src="./Untitled Watercolor (4 Dancing Men).jpg" alt="Artwork 4" onclick="changeImage('./Untitled Watercolor (4 Dancing Men).jpg')">
+    </div>
+
+    <!-- Image Viewer Modal -->
+    <div class="modal fade" id="imageViewer" tabindex="-1" role="dialog" aria-labelledby="imageViewerLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img id="modalImage" class="modal-image" src="" alt="Large Artwork">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+    <script>
+        // Change the main image when a thumbnail is clicked
+        function changeImage(src) {
+            document.getElementById('mainArtwork').src = src;
+        }
+
+        // Show the modal with the clicked image
+        document.getElementById('mainArtwork').addEventListener('click', function () {
+            const src = this.src;
+            document.getElementById('modalImage').src = src;
+            $('#imageViewer').modal('show');
+        });
+    </script>
+</body>
+</html>
